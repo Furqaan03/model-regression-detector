@@ -1,0 +1,102 @@
+{
+  "dataset_version": "v1",
+  "created_at": "2026-07-09",
+  "cases": [
+    {
+      "id": "billing-001",
+      "input": "Hi, I noticed two charges of $29.99 on my card this week for what should be one monthly subscription. Can you look into this and refund the extra charge?",
+      "expected_category": "billing",
+      "expected_summary": "Customer was double-charged and wants the duplicate refunded.",
+      "difficulty": "simple",
+      "notes": "Clear billing case with an explicit ask."
+    },
+    {
+      "id": "technical-001",
+      "input": "Every time I try to export my report to PDF the app just freezes and I have to force-close it. This has happened four times today.",
+      "expected_category": "technical",
+      "expected_summary": "App freezes when exporting a report to PDF.",
+      "difficulty": "simple",
+      "notes": "Unambiguous bug report."
+    },
+    {
+      "id": "account-001",
+      "input": "I changed my email address last week and now I can't log in with either my old or new email. Please help me regain access.",
+      "expected_category": "account",
+      "expected_summary": "Customer is locked out after changing their email address.",
+      "difficulty": "simple",
+      "notes": "Standard account access issue."
+    },
+    {
+      "id": "general-001",
+      "input": "Do you offer student discounts? I'm currently enrolled full-time and would love to know if there's a special rate.",
+      "expected_category": "general",
+      "expected_summary": "Customer is asking whether student discounts are available.",
+      "difficulty": "simple",
+      "notes": "Pre-sales question, no account or billing issue yet."
+    },
+    {
+      "id": "ambiguous-001",
+      "input": "I upgraded to the Pro plan yesterday but I still don't see the Pro features unlocked in my dashboard, and I was also charged the old price instead of the new discounted rate.",
+      "expected_category": "billing",
+      "expected_summary": "Customer was charged the wrong price and Pro features aren't unlocked after upgrading.",
+      "difficulty": "hard",
+      "notes": "Straddles billing and technical/account; billing is primary because pricing is the core complaint. Could reasonably be tagged technical too."
+    },
+    {
+      "id": "ambiguous-002",
+      "input": "my account got suspended right after I disputed a charge with my bank, is that related?",
+      "expected_category": "account",
+      "expected_summary": "Customer's account was suspended shortly after disputing a charge and wants to know if the two are connected.",
+      "difficulty": "hard",
+      "notes": "Account suspension is the actionable issue even though billing dispute is the trigger."
+    },
+    {
+      "id": "short-001",
+      "input": "refund??",
+      "expected_category": "billing",
+      "expected_summary": "Customer is asking about a refund.",
+      "difficulty": "hard",
+      "notes": "Extremely short, no context. Tests graceful handling of minimal input."
+    },
+    {
+      "id": "typo-001",
+      "input": "hii i cant loginn to my acount its saying wrng password evrn tho im sure its rite",
+      "expected_category": "account",
+      "expected_summary": "Customer cannot log in and believes their password is being incorrectly rejected.",
+      "difficulty": "moderate",
+      "notes": "Heavy typos, tests robustness of understanding."
+    },
+    {
+      "id": "mixed-lang-001",
+      "input": "Hola, mi factura de este mes tiene un cargo que no reconozco, can you please check my billing history?",
+      "expected_category": "billing",
+      "expected_summary": "Customer does not recognize a charge on their bill and wants it reviewed.",
+      "difficulty": "moderate",
+      "notes": "Mixed Spanish/English input."
+    },
+    {
+      "id": "sarcastic-001",
+      "input": "Oh great, ANOTHER outage. Third one this week. Really loving the 'reliability' you all keep advertising. Any chance this gets fixed before next year?",
+      "expected_category": "technical",
+      "expected_summary": "Customer is frustrated about repeated service outages and wants them fixed.",
+      "difficulty": "moderate",
+      "notes": "Sarcasm could confuse sentiment-sensitive models into misreading intent."
+    },
+    {
+      "id": "no-answer-001",
+      "input": "asdkjaslkdj",
+      "expected_category": "general",
+      "expected_summary": "Email content is unintelligible; no clear request could be identified.",
+      "difficulty": "adversarial",
+      "notes": "Garbage input, tests fallback behavior rather than forced classification."
+    },
+    {
+      "id": "multi-issue-001",
+      "input": "Three things: 1) I was overcharged $10 last invoice, 2) the mobile app keeps logging me out every hour, and 3) can you add dark mode as a feature request?",
+      "expected_category": "billing",
+      "expected_summary": "Customer reports an overcharge, frequent app logouts, and requests a dark mode feature.",
+      "difficulty": "hard",
+      "notes": "Multi-issue email; billing chosen as primary since it's listed first and has a concrete financial impact. Tests single-label forcing on multi-topic input."
+    }
+  ]
+}
